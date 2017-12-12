@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://10.100.102.238/IGDDemoService/ServiceSAL.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/IngenieriaGD.IGDDemo.Library.DAL.Entities" />
+  <xs:element name="GetAllClients">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllClientsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/IngenieriaGD.IGDDemo.Library.DAL.Entities" minOccurs="0" name="GetAllClientsResult" nillable="true" type="q1:ArrayOfClientInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetClient">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ClientId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetClientResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/IngenieriaGD.IGDDemo.Library.DAL.Entities" minOccurs="0" name="GetClientResult" nillable="true" type="q2:ClientInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateClientReading">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ClientId" type="xs:int" />
+        <xs:element minOccurs="0" name="NewReading" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateClientReadingResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UpdateClientReadingResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ValidateUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="User" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ValidateUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ValidateUserResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
