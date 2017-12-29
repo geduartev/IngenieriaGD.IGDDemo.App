@@ -1,20 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 using Android.App;
-using Android.Content;
 using Android.OS;
-using Android.Runtime;
-using Android.Views;
 using Android.Widget;
+using static IngenieriaGD.IGDDemo.App.AndroidApp.Resource;
 
-namespace Android
+namespace IngenieriaGD.IGDDemo.App.AndroidApp
 {
-    [Activity(Label = "IGDDemo App")]
-    public class Readings : Activity
+    [Activity(Label = "Clients - IGDDemo App")]
+    public class Clients : Activity
     {
+        #region Declaration Controls
+
         TextView textViewMessage;
         EditText editTextClientId;
         EditText editTextPhone;
@@ -23,18 +20,20 @@ namespace Android
         Button buttonConsult;
         Button buttonUpdate;
 
+        #endregion
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            SetContentView(Resource.Layout.Readings);
+            SetContentView(Layout.Clients);
 
-            textViewMessage = FindViewById<TextView>(Resource.Id.textViewMessage);
-            editTextClientId = FindViewById<EditText>(Resource.Id.editTextClientId);
-            editTextPhone = FindViewById<EditText>(Resource.Id.editTextPhone);
-            editTextLastReading = FindViewById<EditText>(Resource.Id.editTextLastReading);
-            editTextNewReading = FindViewById<TextView>(Resource.Id.editTextNewReading);
-            buttonConsult = FindViewById<Button>(Resource.Id.buttonConsult);
-            buttonUpdate = FindViewById<Button>(Resource.Id.buttonUpdate);
+            textViewMessage = FindViewById<TextView>(Id.textViewMessage);
+            editTextClientId = FindViewById<EditText>(Id.editTextClientId);
+            editTextPhone = FindViewById<EditText>(Id.editTextPhone);
+            editTextLastReading = FindViewById<EditText>(Id.editTextLastReading);
+            editTextNewReading = FindViewById<TextView>(Id.editTextNewReading);
+            buttonConsult = FindViewById<Button>(Id.buttonConsult);
+            buttonUpdate = FindViewById<Button>(Id.buttonUpdate);
 
             buttonConsult.Click += ButtonConsult_Click;
             buttonUpdate.Click += ButtonUpdate_Click;
@@ -44,14 +43,14 @@ namespace Android
         {
             if (editTextClientId.Text == string.Empty)
             {
-                textViewMessage.Text = "Debe ingresar el ID de un cliente.";
+                textViewMessage.Text = ResourceMessages.ClientIdEmpty;
                 return;
             }
 
             WS.ServiceSAL service = new WS.ServiceSAL();
             service.GetClientCompleted += Service_GetClientCompleted;
             service.GetClientAsync(int.Parse(editTextClientId.Text), true);
-            textViewMessage.Text = "Consultado, por favor espere...";
+            textViewMessage.Text = ResourceMessages.Waiting;
             buttonConsult.Enabled = false;
         }
 
@@ -59,25 +58,27 @@ namespace Android
         {
             buttonConsult.Enabled = true;
 
+            if (e == null)
+            {
+                textViewMessage.Text = ResourceMessages.ArgumentsNull;
+                return;
+            }
+
             if (e.Error != null)
             {
                 textViewMessage.Text = e.Error.Message;
+                return;
             }
 
             if (e.Cancelled)
             {
-                textViewMessage.Text = "Request was cancelled.";
+                textViewMessage.Text = ResourceMessages.RequestCancelled;
+                return;
             }
 
             if (e.Result == null)
             {
-                textViewMessage.Text = "Client doesn't exist.";
-                return;
-            }
-
-            if (e.Result.Id == 0)
-            {
-                textViewMessage.Text = "Client doesn't exist.";
+                textViewMessage.Text = ResourceMessages.ItemDoesntExist;
                 return;
             }
 
@@ -86,7 +87,7 @@ namespace Android
 
             if (e.Result.Readed)
             {
-                textViewMessage.Text = "All ready reading.";
+                textViewMessage.Text = ResourceMessages.ClientRead;
                 editTextNewReading.Enabled = false;
                 buttonUpdate.Enabled = false;
                 return;
@@ -94,14 +95,14 @@ namespace Android
 
             editTextNewReading.Enabled = true;
             buttonUpdate.Enabled = true;
-            textViewMessage.Text = "Ingrese nueva lectura y presione el botón Actualizar.";
+            textViewMessage.Text = ResourceMessages.ClientReadingMsg;
         }
 
         private void ButtonUpdate_Click(object sender, EventArgs e)
         {
             if (editTextNewReading.Text == string.Empty)
             {
-                textViewMessage.Text = "Please, can you put a new reading?";
+                textViewMessage.Text = ResourceMessages.ClientReadingMsg;
                 return;
             }
 
@@ -110,14 +111,14 @@ namespace Android
 
             if (newReading <= lastReading)
             {
-                textViewMessage.Text = "The new reading should less or equal than the last reading.";
+                textViewMessage.Text = ResourceMessages.ClientNewReadingLessThanLastReading;
                 return;
             }
 
             WS.ServiceSAL service = new WS.ServiceSAL();
             service.UpdateClientReadingCompleted += Service_UpdateClientReadingCompleted;
             service.UpdateClientReadingAsync(int.Parse(editTextClientId.Text), true, int.Parse(editTextNewReading.Text), true);
-            textViewMessage.Text = "Updating...";
+            textViewMessage.Text = ResourceMessages.ItemUpdating;
             buttonUpdate.Enabled = false;
         }
 
@@ -132,17 +133,16 @@ namespace Android
 
             if (e.Cancelled)
             {
-                textViewMessage.Text = "Request was cancelled.";
+                textViewMessage.Text = ResourceMessages.RequestCancelled;
             }
 
             if (!e.UpdateClientReadingResult)
             {
-                textViewMessage.Text = "The new reading can't update. Please, try again.";
+                textViewMessage.Text = ResourceMessages.ItemCantUpdate;
                 return;
             }
 
-            textViewMessage.Text = "El cliente: " + editTextClientId.Text + ", fue actualizado"
-                + "correctamente. Puede realizar otra lectura";
+            textViewMessage.Text = ResourceMessages.ClientUpdated;
 
             editTextClientId.Text = string.Empty;
             editTextPhone.Text = string.Empty;

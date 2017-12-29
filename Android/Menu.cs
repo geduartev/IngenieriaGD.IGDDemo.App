@@ -4,36 +4,44 @@ using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Widget;
+using static IngenieriaGD.IGDDemo.App.AndroidApp.Resource;
 
-namespace Android
+namespace IngenieriaGD.IGDDemo.App.AndroidApp
 {
-    [Activity(Label = "IGDDemo App")]
+    [Activity(Label = "Menu - IGDDemo App")]
     public class Menu : Activity
     {
         Button buttonReadings;
-        Button buttonShoppingCarg;
+        Button buttonOrders;
+        private int sellerId;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            SetContentView(Resource.Layout.Menu);
-            buttonReadings = FindViewById<Button>(Resource.Id.buttonReadings);
-            buttonShoppingCarg = FindViewById<Button>(Resource.Id.buttonShoppingCar);
+            SetContentView(Layout.Menu);
+
+            sellerId = Intent.GetIntExtra("sellerId", 0);
+
+            buttonReadings = FindViewById<Button>(Id.buttonClients);
+            buttonOrders = FindViewById<Button>(Id.buttonOrders);
 
             buttonReadings.Click += ButtonReadings_Click;
-            buttonShoppingCarg.Click += ButtonShoppingCar_Click;
+            buttonOrders.Click += ButtonOrders_Click;
         }
 
-        private void ButtonShoppingCar_Click(object sender, EventArgs e)
+        private void ButtonOrders_Click(object sender, EventArgs e)
         {
-            var shoppingCar = new Intent(this, typeof(Readings));
+            var shoppingCar = new Intent(this, typeof(Orders));
+
+            shoppingCar.PutExtra("sellerId", true);
+
             StartActivity(shoppingCar);
         }
 
         private void ButtonReadings_Click(object sender, EventArgs e)
         {
-            var readings = new Intent(this, typeof(Readings));
-            StartActivity(readings);
+            var clients = new Intent(this, typeof(Clients));
+            StartActivity(clients);
         }
     }
 }

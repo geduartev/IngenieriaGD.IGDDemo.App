@@ -13,7 +13,7 @@
 // 
 #pragma warning disable 1591
 
-namespace Android.WS {
+namespace IngenieriaGD.IGDDemo.App.AndroidApp.WS {
     using System;
     using System.Web.Services;
     using System.Diagnostics;
@@ -33,9 +33,19 @@ namespace Android.WS {
         
         private System.Threading.SendOrPostCallback GetClientOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetClientByDocumentOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback InsertClientOperationCompleted;
+        
         private System.Threading.SendOrPostCallback UpdateClientReadingOperationCompleted;
         
         private System.Threading.SendOrPostCallback ValidateUserOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetAllDocumentTypesOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback WriteOperationTrackingOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback WriteExceptionTrackingOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -82,10 +92,25 @@ namespace Android.WS {
         public event GetClientCompletedEventHandler GetClientCompleted;
         
         /// <remarks/>
+        public event GetClientByDocumentCompletedEventHandler GetClientByDocumentCompleted;
+        
+        /// <remarks/>
+        public event InsertClientCompletedEventHandler InsertClientCompleted;
+        
+        /// <remarks/>
         public event UpdateClientReadingCompletedEventHandler UpdateClientReadingCompleted;
         
         /// <remarks/>
         public event ValidateUserCompletedEventHandler ValidateUserCompleted;
+        
+        /// <remarks/>
+        public event GetAllDocumentTypesCompletedEventHandler GetAllDocumentTypesCompleted;
+        
+        /// <remarks/>
+        public event WriteOperationTrackingCompletedEventHandler WriteOperationTrackingCompleted;
+        
+        /// <remarks/>
+        public event WriteExceptionTrackingCompletedEventHandler WriteExceptionTrackingCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IServiceSAL/GetAllClients", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -120,26 +145,26 @@ namespace Android.WS {
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IServiceSAL/GetClient", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public ClientInfo GetClient(int ClientId, [System.Xml.Serialization.XmlIgnoreAttribute()] bool ClientIdSpecified) {
+        public ClientInfo GetClient(int clientId, [System.Xml.Serialization.XmlIgnoreAttribute()] bool clientIdSpecified) {
             object[] results = this.Invoke("GetClient", new object[] {
-                        ClientId,
-                        ClientIdSpecified});
+                        clientId,
+                        clientIdSpecified});
             return ((ClientInfo)(results[0]));
         }
         
         /// <remarks/>
-        public void GetClientAsync(int ClientId, bool ClientIdSpecified) {
-            this.GetClientAsync(ClientId, ClientIdSpecified, null);
+        public void GetClientAsync(int clientId, bool clientIdSpecified) {
+            this.GetClientAsync(clientId, clientIdSpecified, null);
         }
         
         /// <remarks/>
-        public void GetClientAsync(int ClientId, bool ClientIdSpecified, object userState) {
+        public void GetClientAsync(int clientId, bool clientIdSpecified, object userState) {
             if ((this.GetClientOperationCompleted == null)) {
                 this.GetClientOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetClientOperationCompleted);
             }
             this.InvokeAsync("GetClient", new object[] {
-                        ClientId,
-                        ClientIdSpecified}, this.GetClientOperationCompleted, userState);
+                        clientId,
+                        clientIdSpecified}, this.GetClientOperationCompleted, userState);
         }
         
         private void OnGetClientOperationCompleted(object arg) {
@@ -150,32 +175,96 @@ namespace Android.WS {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IServiceSAL/GetClientByDocument", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public ClientInfo GetClientByDocument(int documentType, [System.Xml.Serialization.XmlIgnoreAttribute()] bool documentTypeSpecified, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string documentNumber) {
+            object[] results = this.Invoke("GetClientByDocument", new object[] {
+                        documentType,
+                        documentTypeSpecified,
+                        documentNumber});
+            return ((ClientInfo)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetClientByDocumentAsync(int documentType, bool documentTypeSpecified, string documentNumber) {
+            this.GetClientByDocumentAsync(documentType, documentTypeSpecified, documentNumber, null);
+        }
+        
+        /// <remarks/>
+        public void GetClientByDocumentAsync(int documentType, bool documentTypeSpecified, string documentNumber, object userState) {
+            if ((this.GetClientByDocumentOperationCompleted == null)) {
+                this.GetClientByDocumentOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetClientByDocumentOperationCompleted);
+            }
+            this.InvokeAsync("GetClientByDocument", new object[] {
+                        documentType,
+                        documentTypeSpecified,
+                        documentNumber}, this.GetClientByDocumentOperationCompleted, userState);
+        }
+        
+        private void OnGetClientByDocumentOperationCompleted(object arg) {
+            if ((this.GetClientByDocumentCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetClientByDocumentCompleted(this, new GetClientByDocumentCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IServiceSAL/InsertClient", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void InsertClient([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] ClientInfo clientInfo, out bool InsertClientResult, [System.Xml.Serialization.XmlIgnoreAttribute()] out bool InsertClientResultSpecified) {
+            object[] results = this.Invoke("InsertClient", new object[] {
+                        clientInfo});
+            InsertClientResult = ((bool)(results[0]));
+            InsertClientResultSpecified = ((bool)(results[1]));
+        }
+        
+        /// <remarks/>
+        public void InsertClientAsync(ClientInfo clientInfo) {
+            this.InsertClientAsync(clientInfo, null);
+        }
+        
+        /// <remarks/>
+        public void InsertClientAsync(ClientInfo clientInfo, object userState) {
+            if ((this.InsertClientOperationCompleted == null)) {
+                this.InsertClientOperationCompleted = new System.Threading.SendOrPostCallback(this.OnInsertClientOperationCompleted);
+            }
+            this.InvokeAsync("InsertClient", new object[] {
+                        clientInfo}, this.InsertClientOperationCompleted, userState);
+        }
+        
+        private void OnInsertClientOperationCompleted(object arg) {
+            if ((this.InsertClientCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.InsertClientCompleted(this, new InsertClientCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IServiceSAL/UpdateClientReading", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void UpdateClientReading(int ClientId, [System.Xml.Serialization.XmlIgnoreAttribute()] bool ClientIdSpecified, int NewReading, [System.Xml.Serialization.XmlIgnoreAttribute()] bool NewReadingSpecified, out bool UpdateClientReadingResult, [System.Xml.Serialization.XmlIgnoreAttribute()] out bool UpdateClientReadingResultSpecified) {
+        public void UpdateClientReading(int clientId, [System.Xml.Serialization.XmlIgnoreAttribute()] bool clientIdSpecified, int newReading, [System.Xml.Serialization.XmlIgnoreAttribute()] bool newReadingSpecified, out bool UpdateClientReadingResult, [System.Xml.Serialization.XmlIgnoreAttribute()] out bool UpdateClientReadingResultSpecified) {
             object[] results = this.Invoke("UpdateClientReading", new object[] {
-                        ClientId,
-                        ClientIdSpecified,
-                        NewReading,
-                        NewReadingSpecified});
+                        clientId,
+                        clientIdSpecified,
+                        newReading,
+                        newReadingSpecified});
             UpdateClientReadingResult = ((bool)(results[0]));
             UpdateClientReadingResultSpecified = ((bool)(results[1]));
         }
         
         /// <remarks/>
-        public void UpdateClientReadingAsync(int ClientId, bool ClientIdSpecified, int NewReading, bool NewReadingSpecified) {
-            this.UpdateClientReadingAsync(ClientId, ClientIdSpecified, NewReading, NewReadingSpecified, null);
+        public void UpdateClientReadingAsync(int clientId, bool clientIdSpecified, int newReading, bool newReadingSpecified) {
+            this.UpdateClientReadingAsync(clientId, clientIdSpecified, newReading, newReadingSpecified, null);
         }
         
         /// <remarks/>
-        public void UpdateClientReadingAsync(int ClientId, bool ClientIdSpecified, int NewReading, bool NewReadingSpecified, object userState) {
+        public void UpdateClientReadingAsync(int clientId, bool clientIdSpecified, int newReading, bool newReadingSpecified, object userState) {
             if ((this.UpdateClientReadingOperationCompleted == null)) {
                 this.UpdateClientReadingOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUpdateClientReadingOperationCompleted);
             }
             this.InvokeAsync("UpdateClientReading", new object[] {
-                        ClientId,
-                        ClientIdSpecified,
-                        NewReading,
-                        NewReadingSpecified}, this.UpdateClientReadingOperationCompleted, userState);
+                        clientId,
+                        clientIdSpecified,
+                        newReading,
+                        newReadingSpecified}, this.UpdateClientReadingOperationCompleted, userState);
         }
         
         private void OnUpdateClientReadingOperationCompleted(object arg) {
@@ -187,33 +276,119 @@ namespace Android.WS {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IServiceSAL/ValidateUser", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void ValidateUser([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string User, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string Password, out bool ValidateUserResult, [System.Xml.Serialization.XmlIgnoreAttribute()] out bool ValidateUserResultSpecified) {
+        public void ValidateUser([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string user, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string password, out bool ValidateUserResult, [System.Xml.Serialization.XmlIgnoreAttribute()] out bool ValidateUserResultSpecified) {
             object[] results = this.Invoke("ValidateUser", new object[] {
-                        User,
-                        Password});
+                        user,
+                        password});
             ValidateUserResult = ((bool)(results[0]));
             ValidateUserResultSpecified = ((bool)(results[1]));
         }
         
         /// <remarks/>
-        public void ValidateUserAsync(string User, string Password) {
-            this.ValidateUserAsync(User, Password, null);
+        public void ValidateUserAsync(string user, string password) {
+            this.ValidateUserAsync(user, password, null);
         }
         
         /// <remarks/>
-        public void ValidateUserAsync(string User, string Password, object userState) {
+        public void ValidateUserAsync(string user, string password, object userState) {
             if ((this.ValidateUserOperationCompleted == null)) {
                 this.ValidateUserOperationCompleted = new System.Threading.SendOrPostCallback(this.OnValidateUserOperationCompleted);
             }
             this.InvokeAsync("ValidateUser", new object[] {
-                        User,
-                        Password}, this.ValidateUserOperationCompleted, userState);
+                        user,
+                        password}, this.ValidateUserOperationCompleted, userState);
         }
         
         private void OnValidateUserOperationCompleted(object arg) {
             if ((this.ValidateUserCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.ValidateUserCompleted(this, new ValidateUserCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IServiceSAL/GetAllDocumentTypes", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+        [return: System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.datacontract.org/2004/07/IngenieriaGD.IGDDemo.Library.DAL.Entities" +
+            "")]
+        public DocumentTypeInfo[] GetAllDocumentTypes() {
+            object[] results = this.Invoke("GetAllDocumentTypes", new object[0]);
+            return ((DocumentTypeInfo[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetAllDocumentTypesAsync() {
+            this.GetAllDocumentTypesAsync(null);
+        }
+        
+        /// <remarks/>
+        public void GetAllDocumentTypesAsync(object userState) {
+            if ((this.GetAllDocumentTypesOperationCompleted == null)) {
+                this.GetAllDocumentTypesOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetAllDocumentTypesOperationCompleted);
+            }
+            this.InvokeAsync("GetAllDocumentTypes", new object[0], this.GetAllDocumentTypesOperationCompleted, userState);
+        }
+        
+        private void OnGetAllDocumentTypesOperationCompleted(object arg) {
+            if ((this.GetAllDocumentTypesCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetAllDocumentTypesCompleted(this, new GetAllDocumentTypesCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IServiceSAL/WriteOperationTracking", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void WriteOperationTracking([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] OperationTracking operationTracking) {
+            this.Invoke("WriteOperationTracking", new object[] {
+                        operationTracking});
+        }
+        
+        /// <remarks/>
+        public void WriteOperationTrackingAsync(OperationTracking operationTracking) {
+            this.WriteOperationTrackingAsync(operationTracking, null);
+        }
+        
+        /// <remarks/>
+        public void WriteOperationTrackingAsync(OperationTracking operationTracking, object userState) {
+            if ((this.WriteOperationTrackingOperationCompleted == null)) {
+                this.WriteOperationTrackingOperationCompleted = new System.Threading.SendOrPostCallback(this.OnWriteOperationTrackingOperationCompleted);
+            }
+            this.InvokeAsync("WriteOperationTracking", new object[] {
+                        operationTracking}, this.WriteOperationTrackingOperationCompleted, userState);
+        }
+        
+        private void OnWriteOperationTrackingOperationCompleted(object arg) {
+            if ((this.WriteOperationTrackingCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.WriteOperationTrackingCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IServiceSAL/WriteExceptionTracking", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void WriteExceptionTracking([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] ExceptionTracking exceptionTracking) {
+            this.Invoke("WriteExceptionTracking", new object[] {
+                        exceptionTracking});
+        }
+        
+        /// <remarks/>
+        public void WriteExceptionTrackingAsync(ExceptionTracking exceptionTracking) {
+            this.WriteExceptionTrackingAsync(exceptionTracking, null);
+        }
+        
+        /// <remarks/>
+        public void WriteExceptionTrackingAsync(ExceptionTracking exceptionTracking, object userState) {
+            if ((this.WriteExceptionTrackingOperationCompleted == null)) {
+                this.WriteExceptionTrackingOperationCompleted = new System.Threading.SendOrPostCallback(this.OnWriteExceptionTrackingOperationCompleted);
+            }
+            this.InvokeAsync("WriteExceptionTracking", new object[] {
+                        exceptionTracking}, this.WriteExceptionTrackingOperationCompleted, userState);
+        }
+        
+        private void OnWriteExceptionTrackingOperationCompleted(object arg) {
+            if ((this.WriteExceptionTrackingCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.WriteExceptionTrackingCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -245,6 +420,22 @@ namespace Android.WS {
         "")]
     public partial class ClientInfo {
         
+        private string addressField;
+        
+        private System.DateTime anniversaryField;
+        
+        private bool anniversaryFieldSpecified;
+        
+        private string documentNumberField;
+        
+        private int documentTypeIdField;
+        
+        private bool documentTypeIdFieldSpecified;
+        
+        private string emailField;
+        
+        private string firstNameField;
+        
         private int idField;
         
         private bool idFieldSpecified;
@@ -258,6 +449,94 @@ namespace Android.WS {
         private bool readedField;
         
         private bool readedFieldSpecified;
+        
+        private string secondNameField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string Address {
+            get {
+                return this.addressField;
+            }
+            set {
+                this.addressField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime Anniversary {
+            get {
+                return this.anniversaryField;
+            }
+            set {
+                this.anniversaryField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool AnniversarySpecified {
+            get {
+                return this.anniversaryFieldSpecified;
+            }
+            set {
+                this.anniversaryFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string DocumentNumber {
+            get {
+                return this.documentNumberField;
+            }
+            set {
+                this.documentNumberField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int DocumentTypeId {
+            get {
+                return this.documentTypeIdField;
+            }
+            set {
+                this.documentTypeIdField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool DocumentTypeIdSpecified {
+            get {
+                return this.documentTypeIdFieldSpecified;
+            }
+            set {
+                this.documentTypeIdFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string Email {
+            get {
+                return this.emailField;
+            }
+            set {
+                this.emailField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string FirstName {
+            get {
+                return this.firstNameField;
+            }
+            set {
+                this.firstNameField = value;
+            }
+        }
         
         /// <remarks/>
         public int Id {
@@ -332,6 +611,412 @@ namespace Android.WS {
                 this.readedFieldSpecified = value;
             }
         }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string SecondName {
+            get {
+                return this.secondNameField;
+            }
+            set {
+                this.secondNameField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/IngenieriaGD.IGDLogWriter.Library.Contrac" +
+        "ts")]
+    public partial class ExceptionTracking {
+        
+        private string appNameField;
+        
+        private string appPathField;
+        
+        private string appVersionField;
+        
+        private object exceptionField;
+        
+        private System.Nullable<System.DateTime> exceptionDateField;
+        
+        private bool exceptionDateFieldSpecified;
+        
+        private string ipAddressField;
+        
+        private string machineNameField;
+        
+        private string messageField;
+        
+        private string trackIdField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string AppName {
+            get {
+                return this.appNameField;
+            }
+            set {
+                this.appNameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string AppPath {
+            get {
+                return this.appPathField;
+            }
+            set {
+                this.appPathField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string AppVersion {
+            get {
+                return this.appVersionField;
+            }
+            set {
+                this.appVersionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public object Exception {
+            get {
+                return this.exceptionField;
+            }
+            set {
+                this.exceptionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<System.DateTime> ExceptionDate {
+            get {
+                return this.exceptionDateField;
+            }
+            set {
+                this.exceptionDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool ExceptionDateSpecified {
+            get {
+                return this.exceptionDateFieldSpecified;
+            }
+            set {
+                this.exceptionDateFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string IpAddress {
+            get {
+                return this.ipAddressField;
+            }
+            set {
+                this.ipAddressField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string MachineName {
+            get {
+                return this.machineNameField;
+            }
+            set {
+                this.machineNameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string Message {
+            get {
+                return this.messageField;
+            }
+            set {
+                this.messageField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string TrackId {
+            get {
+                return this.trackIdField;
+            }
+            set {
+                this.trackIdField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/IngenieriaGD.IGDLogWriter.Library.Contrac" +
+        "ts")]
+    public partial class OperationTracking {
+        
+        private string appNameField;
+        
+        private string appPathField;
+        
+        private string appVersionField;
+        
+        private System.Nullable<double> executionTimeField;
+        
+        private bool executionTimeFieldSpecified;
+        
+        private string machineNameField;
+        
+        private string[] maskFieldsField;
+        
+        private string operationField;
+        
+        private System.Nullable<System.DateTime> operationDateField;
+        
+        private bool operationDateFieldSpecified;
+        
+        private string[] removeFieldsField;
+        
+        private object requestField;
+        
+        private object responseField;
+        
+        private string trackIdField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string AppName {
+            get {
+                return this.appNameField;
+            }
+            set {
+                this.appNameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string AppPath {
+            get {
+                return this.appPathField;
+            }
+            set {
+                this.appPathField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string AppVersion {
+            get {
+                return this.appVersionField;
+            }
+            set {
+                this.appVersionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<double> ExecutionTime {
+            get {
+                return this.executionTimeField;
+            }
+            set {
+                this.executionTimeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool ExecutionTimeSpecified {
+            get {
+                return this.executionTimeFieldSpecified;
+            }
+            set {
+                this.executionTimeFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string MachineName {
+            get {
+                return this.machineNameField;
+            }
+            set {
+                this.machineNameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+        [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays")]
+        public string[] MaskFields {
+            get {
+                return this.maskFieldsField;
+            }
+            set {
+                this.maskFieldsField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string Operation {
+            get {
+                return this.operationField;
+            }
+            set {
+                this.operationField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<System.DateTime> OperationDate {
+            get {
+                return this.operationDateField;
+            }
+            set {
+                this.operationDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool OperationDateSpecified {
+            get {
+                return this.operationDateFieldSpecified;
+            }
+            set {
+                this.operationDateFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+        [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays")]
+        public string[] RemoveFields {
+            get {
+                return this.removeFieldsField;
+            }
+            set {
+                this.removeFieldsField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public object Request {
+            get {
+                return this.requestField;
+            }
+            set {
+                this.requestField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public object Response {
+            get {
+                return this.responseField;
+            }
+            set {
+                this.responseField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string TrackId {
+            get {
+                return this.trackIdField;
+            }
+            set {
+                this.trackIdField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/IngenieriaGD.IGDDemo.Library.DAL.Entities" +
+        "")]
+    public partial class DocumentTypeInfo {
+        
+        private string codeField;
+        
+        private int idField;
+        
+        private bool idFieldSpecified;
+        
+        private string titleField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string Code {
+            get {
+                return this.codeField;
+            }
+            set {
+                this.codeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int Id {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool IdSpecified {
+            get {
+                return this.idFieldSpecified;
+            }
+            set {
+                this.idFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string Title {
+            get {
+                return this.titleField;
+            }
+            set {
+                this.titleField = value;
+            }
+        }
     }
     
     /// <remarks/>
@@ -382,6 +1067,66 @@ namespace Android.WS {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((ClientInfo)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    public delegate void GetClientByDocumentCompletedEventHandler(object sender, GetClientByDocumentCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetClientByDocumentCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetClientByDocumentCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public ClientInfo Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((ClientInfo)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    public delegate void InsertClientCompletedEventHandler(object sender, InsertClientCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class InsertClientCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal InsertClientCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool InsertClientResult {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+        
+        /// <remarks/>
+        public bool InsertClientResultSpecified {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[1]));
             }
         }
     }
@@ -453,6 +1198,40 @@ namespace Android.WS {
             }
         }
     }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    public delegate void GetAllDocumentTypesCompletedEventHandler(object sender, GetAllDocumentTypesCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetAllDocumentTypesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetAllDocumentTypesCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public DocumentTypeInfo[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((DocumentTypeInfo[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    public delegate void WriteOperationTrackingCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    public delegate void WriteExceptionTrackingCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
 }
 
 #pragma warning restore 1591

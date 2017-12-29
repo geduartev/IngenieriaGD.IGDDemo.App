@@ -5,6 +5,8 @@
       <xsd:import schemaLocation="http://10.100.102.238/IGDDemoService/ServiceSAL.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://10.100.102.238/IGDDemoService/ServiceSAL.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://10.100.102.238/IGDDemoService/ServiceSAL.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/IngenieriaGD.IGDDemo.Library.DAL.Entities" />
+      <xsd:import schemaLocation="http://10.100.102.238/IGDDemoService/ServiceSAL.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/IngenieriaGD.IGDLogWriter.Library.Contracts" />
+      <xsd:import schemaLocation="http://10.100.102.238/IGDDemoService/ServiceSAL.svc?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IServiceSAL_GetAllClients_InputMessage">
@@ -19,6 +21,18 @@
   <wsdl:message name="IServiceSAL_GetClient_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetClientResponse" />
   </wsdl:message>
+  <wsdl:message name="IServiceSAL_GetClientByDocument_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetClientByDocument" />
+  </wsdl:message>
+  <wsdl:message name="IServiceSAL_GetClientByDocument_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetClientByDocumentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceSAL_InsertClient_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertClient" />
+  </wsdl:message>
+  <wsdl:message name="IServiceSAL_InsertClient_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertClientResponse" />
+  </wsdl:message>
   <wsdl:message name="IServiceSAL_UpdateClientReading_InputMessage">
     <wsdl:part name="parameters" element="tns:UpdateClientReading" />
   </wsdl:message>
@@ -31,6 +45,24 @@
   <wsdl:message name="IServiceSAL_ValidateUser_OutputMessage">
     <wsdl:part name="parameters" element="tns:ValidateUserResponse" />
   </wsdl:message>
+  <wsdl:message name="IServiceSAL_GetAllDocumentTypes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllDocumentTypes" />
+  </wsdl:message>
+  <wsdl:message name="IServiceSAL_GetAllDocumentTypes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllDocumentTypesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceSAL_WriteOperationTracking_InputMessage">
+    <wsdl:part name="parameters" element="tns:WriteOperationTracking" />
+  </wsdl:message>
+  <wsdl:message name="IServiceSAL_WriteOperationTracking_OutputMessage">
+    <wsdl:part name="parameters" element="tns:WriteOperationTrackingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceSAL_WriteExceptionTracking_InputMessage">
+    <wsdl:part name="parameters" element="tns:WriteExceptionTracking" />
+  </wsdl:message>
+  <wsdl:message name="IServiceSAL_WriteExceptionTracking_OutputMessage">
+    <wsdl:part name="parameters" element="tns:WriteExceptionTrackingResponse" />
+  </wsdl:message>
   <wsdl:portType name="IServiceSAL">
     <wsdl:operation name="GetAllClients">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceSAL/GetAllClients" message="tns:IServiceSAL_GetAllClients_InputMessage" />
@@ -40,6 +72,14 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceSAL/GetClient" message="tns:IServiceSAL_GetClient_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceSAL/GetClientResponse" message="tns:IServiceSAL_GetClient_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetClientByDocument">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceSAL/GetClientByDocument" message="tns:IServiceSAL_GetClientByDocument_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceSAL/GetClientByDocumentResponse" message="tns:IServiceSAL_GetClientByDocument_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertClient">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceSAL/InsertClient" message="tns:IServiceSAL_InsertClient_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceSAL/InsertClientResponse" message="tns:IServiceSAL_InsertClient_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="UpdateClientReading">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceSAL/UpdateClientReading" message="tns:IServiceSAL_UpdateClientReading_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceSAL/UpdateClientReadingResponse" message="tns:IServiceSAL_UpdateClientReading_OutputMessage" />
@@ -47,6 +87,18 @@
     <wsdl:operation name="ValidateUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceSAL/ValidateUser" message="tns:IServiceSAL_ValidateUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceSAL/ValidateUserResponse" message="tns:IServiceSAL_ValidateUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllDocumentTypes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceSAL/GetAllDocumentTypes" message="tns:IServiceSAL_GetAllDocumentTypes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceSAL/GetAllDocumentTypesResponse" message="tns:IServiceSAL_GetAllDocumentTypes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="WriteOperationTracking">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceSAL/WriteOperationTracking" message="tns:IServiceSAL_WriteOperationTracking_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceSAL/WriteOperationTrackingResponse" message="tns:IServiceSAL_WriteOperationTracking_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="WriteExceptionTracking">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceSAL/WriteExceptionTracking" message="tns:IServiceSAL_WriteExceptionTracking_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceSAL/WriteExceptionTrackingResponse" message="tns:IServiceSAL_WriteExceptionTracking_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IServiceSAL" type="tns:IServiceSAL">
@@ -69,6 +121,24 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetClientByDocument">
+      <soap:operation soapAction="http://tempuri.org/IServiceSAL/GetClientByDocument" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertClient">
+      <soap:operation soapAction="http://tempuri.org/IServiceSAL/InsertClient" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="UpdateClientReading">
       <soap:operation soapAction="http://tempuri.org/IServiceSAL/UpdateClientReading" style="document" />
       <wsdl:input>
@@ -80,6 +150,33 @@
     </wsdl:operation>
     <wsdl:operation name="ValidateUser">
       <soap:operation soapAction="http://tempuri.org/IServiceSAL/ValidateUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllDocumentTypes">
+      <soap:operation soapAction="http://tempuri.org/IServiceSAL/GetAllDocumentTypes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WriteOperationTracking">
+      <soap:operation soapAction="http://tempuri.org/IServiceSAL/WriteOperationTracking" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WriteExceptionTracking">
+      <soap:operation soapAction="http://tempuri.org/IServiceSAL/WriteExceptionTracking" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

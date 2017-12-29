@@ -8,11 +8,32 @@
   <xs:element name="ArrayOfClientInfo" nillable="true" type="tns:ArrayOfClientInfo" />
   <xs:complexType name="ClientInfo">
     <xs:sequence>
+      <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Anniversary" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DocumentNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DocumentTypeId" type="xs:int" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
       <xs:element minOccurs="0" name="LastReading" type="xs:int" />
       <xs:element minOccurs="0" name="Phone" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Readed" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SecondName" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ClientInfo" nillable="true" type="tns:ClientInfo" />
+  <xs:complexType name="ArrayOfDocumentTypeInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DocumentTypeInfo" nillable="true" type="tns:DocumentTypeInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDocumentTypeInfo" nillable="true" type="tns:ArrayOfDocumentTypeInfo" />
+  <xs:complexType name="DocumentTypeInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DocumentTypeInfo" nillable="true" type="tns:DocumentTypeInfo" />
 </xs:schema>

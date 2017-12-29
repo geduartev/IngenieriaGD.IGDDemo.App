@@ -4,19 +4,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:minWidth="25px"
-    android:minHeight="25px">
+    android:minHeight="25px"
+    android:background="@android:color/holo_blue_light">
     <TextView
         android:text="Lecturas"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView1" />
+        android:id="@+id/textView1"
+        android:textSize="30sp"
+        android:gravity="center" />
     <TextView
         android:text="Ingrese cliente y presione el botón Consultar"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textViewMessage" />
+        android:id="@+id/textViewMessage"
+        android:textColor="@android:color/background_light"
+        android:textSize="25sp"
+        android:gravity="center" />
     <TextView
         android:text=""
         android:textAppearance="?android:attr/textAppearanceMedium"
@@ -45,7 +51,11 @@
         android:text="Consultar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/buttonConsult" />
+        android:id="@+id/buttonConsult"
+        android:background="@drawable/orangebuttonstyle"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:drawableLeft="@drawable/if_search_59506" />
     <TextView
         android:text=""
         android:textAppearance="?android:attr/textAppearanceMedium"
@@ -92,5 +102,9 @@
         android:text="Actualizar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/buttonUpdate" />
+        android:id="@+id/buttonUpdate"
+        android:background="@drawable/bluebuttonstyle"
+        android:layout_marginRight="20dp"
+        android:layout_marginStart="20dp"
+        android:drawableLeft="@drawable/if_check_59438" />
 </LinearLayout>

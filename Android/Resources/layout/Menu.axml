@@ -4,13 +4,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:minWidth="25px"
-    android:minHeight="25px">
+    android:minHeight="25px"
+    android:background="@android:color/holo_blue_light">
     <TextView
         android:text="Menu"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView1" />
+        android:id="@+id/textView1"
+        android:textSize="30sp"
+        android:gravity="center" />
     <TextView
         android:text=""
         android:textAppearance="?android:attr/textAppearanceMedium"
@@ -18,10 +21,14 @@
         android:layout_height="wrap_content"
         android:id="@+id/textView2" />
     <Button
-        android:text="Lecturas"
+        android:text="Clientes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/buttonReadings" />
+        android:id="@+id/buttonClients"
+        android:background="@drawable/bluebuttonstyle"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:drawableLeft="@drawable/if_category_59437" />
     <TextView
         android:text=""
         android:textAppearance="?android:attr/textAppearanceMedium"
@@ -29,8 +36,12 @@
         android:layout_height="wrap_content"
         android:id="@+id/textView3" />
     <Button
-        android:text="Shopping Car"
+        android:text="Pedidos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/buttonShoppingCar" />
+        android:id="@+id/buttonOrders"
+        android:background="@drawable/bluebuttonstyle"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:drawableLeft="@drawable/if_order_59488" />
 </LinearLayout>
