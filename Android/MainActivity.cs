@@ -43,9 +43,9 @@ namespace IngenieriaGD.IGDDemo.App.AndroidApp
             #endregion
 
             progressBarProgress.Visibility = Android.Views.ViewStates.Invisible;
-            var newClient = new Intent(this, typeof(NewClient));
-            newClient.PutExtra("SellerId", 0);
-            StartActivity(newClient);
+            //var newClient = new Intent(this, typeof(NewClient));
+            //newClient.PutExtra("SellerId", 0);
+            //StartActivity(newClient);
         }
 
         private void buttonLogin_Click(object sender, EventArgs e)

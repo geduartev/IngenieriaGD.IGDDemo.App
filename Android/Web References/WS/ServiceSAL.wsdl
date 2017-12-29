@@ -5,8 +5,6 @@
       <xsd:import schemaLocation="http://10.100.102.238/IGDDemoService/ServiceSAL.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://10.100.102.238/IGDDemoService/ServiceSAL.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://10.100.102.238/IGDDemoService/ServiceSAL.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/IngenieriaGD.IGDDemo.Library.DAL.Entities" />
-      <xsd:import schemaLocation="http://10.100.102.238/IGDDemoService/ServiceSAL.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/IngenieriaGD.IGDLogWriter.Library.Contracts" />
-      <xsd:import schemaLocation="http://10.100.102.238/IGDDemoService/ServiceSAL.svc?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IServiceSAL_GetAllClients_InputMessage">

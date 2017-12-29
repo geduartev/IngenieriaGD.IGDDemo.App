@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <DiscoveryClientResultsFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Results>
-    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://10.100.102.238/IGDDemoService/ServiceSAL.svc?wsdl" filename="ServiceSAL.wsdl" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.DiscoveryDocumentReference" url="http://10.100.102.238/IGDDemoService/ServiceSAL.svc?disco" filename="ServiceSAL.disco" />
     <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://10.100.102.238/IGDDemoService/ServiceSAL.svc?xsd=xsd2" filename="ServiceSAL.xsd" />
     <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://10.100.102.238/IGDDemoService/ServiceSAL.svc?xsd=xsd0" filename="ServiceSAL0.xsd" />
-    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://10.100.102.238/IGDDemoService/ServiceSAL.svc?xsd=xsd3" filename="ServiceSAL1.xsd" />
-    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.DiscoveryDocumentReference" url="http://10.100.102.238/IGDDemoService/ServiceSAL.svc?disco" filename="ServiceSAL.disco" />
-    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://10.100.102.238/IGDDemoService/ServiceSAL.svc?xsd=xsd1" filename="ServiceSAL2.xsd" />
-    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://10.100.102.238/IGDDemoService/ServiceSAL.svc?xsd=xsd4" filename="ServiceSAL3.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://10.100.102.238/IGDDemoService/ServiceSAL.svc?wsdl" filename="ServiceSAL.wsdl" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://10.100.102.238/IGDDemoService/ServiceSAL.svc?xsd=xsd1" filename="ServiceSAL1.xsd" />
   </Results>
 </DiscoveryClientResultsFile>

@@ -1,3 +1,9 @@
+# V.3.0.0 Gabriel Eduardo Duarte Vega - 2017/12/11
+## Xamarin 2017
+### IGDDemo Demo Android
+> Descripción: Aplicación Android para el producto de demostración IGDDemo
++ Se actualiza servicio web con nuevos métodos para registrar los eventos de operaciones y excepciones.
+
 # V.2.0.0 Gabriel Eduardo Duarte Vega - 2017/12/11
 ## Xamarin 2017
 ### IGDDemo Demo Android

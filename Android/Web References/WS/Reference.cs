@@ -338,23 +338,25 @@ namespace IngenieriaGD.IGDDemo.App.AndroidApp.WS {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IServiceSAL/WriteOperationTracking", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void WriteOperationTracking([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] OperationTracking operationTracking) {
+        public void WriteOperationTracking([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] object request, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] object response) {
             this.Invoke("WriteOperationTracking", new object[] {
-                        operationTracking});
+                        request,
+                        response});
         }
         
         /// <remarks/>
-        public void WriteOperationTrackingAsync(OperationTracking operationTracking) {
-            this.WriteOperationTrackingAsync(operationTracking, null);
+        public void WriteOperationTrackingAsync(object request, object response) {
+            this.WriteOperationTrackingAsync(request, response, null);
         }
         
         /// <remarks/>
-        public void WriteOperationTrackingAsync(OperationTracking operationTracking, object userState) {
+        public void WriteOperationTrackingAsync(object request, object response, object userState) {
             if ((this.WriteOperationTrackingOperationCompleted == null)) {
                 this.WriteOperationTrackingOperationCompleted = new System.Threading.SendOrPostCallback(this.OnWriteOperationTrackingOperationCompleted);
             }
             this.InvokeAsync("WriteOperationTracking", new object[] {
-                        operationTracking}, this.WriteOperationTrackingOperationCompleted, userState);
+                        request,
+                        response}, this.WriteOperationTrackingOperationCompleted, userState);
         }
         
         private void OnWriteOperationTrackingOperationCompleted(object arg) {
@@ -366,23 +368,23 @@ namespace IngenieriaGD.IGDDemo.App.AndroidApp.WS {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IServiceSAL/WriteExceptionTracking", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void WriteExceptionTracking([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] ExceptionTracking exceptionTracking) {
+        public void WriteExceptionTracking([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] object exception) {
             this.Invoke("WriteExceptionTracking", new object[] {
-                        exceptionTracking});
+                        exception});
         }
         
         /// <remarks/>
-        public void WriteExceptionTrackingAsync(ExceptionTracking exceptionTracking) {
-            this.WriteExceptionTrackingAsync(exceptionTracking, null);
+        public void WriteExceptionTrackingAsync(object exception) {
+            this.WriteExceptionTrackingAsync(exception, null);
         }
         
         /// <remarks/>
-        public void WriteExceptionTrackingAsync(ExceptionTracking exceptionTracking, object userState) {
+        public void WriteExceptionTrackingAsync(object exception, object userState) {
             if ((this.WriteExceptionTrackingOperationCompleted == null)) {
                 this.WriteExceptionTrackingOperationCompleted = new System.Threading.SendOrPostCallback(this.OnWriteExceptionTrackingOperationCompleted);
             }
             this.InvokeAsync("WriteExceptionTracking", new object[] {
-                        exceptionTracking}, this.WriteExceptionTrackingOperationCompleted, userState);
+                        exception}, this.WriteExceptionTrackingOperationCompleted, userState);
         }
         
         private void OnWriteExceptionTrackingOperationCompleted(object arg) {
@@ -620,340 +622,6 @@ namespace IngenieriaGD.IGDDemo.App.AndroidApp.WS {
             }
             set {
                 this.secondNameField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/IngenieriaGD.IGDLogWriter.Library.Contrac" +
-        "ts")]
-    public partial class ExceptionTracking {
-        
-        private string appNameField;
-        
-        private string appPathField;
-        
-        private string appVersionField;
-        
-        private object exceptionField;
-        
-        private System.Nullable<System.DateTime> exceptionDateField;
-        
-        private bool exceptionDateFieldSpecified;
-        
-        private string ipAddressField;
-        
-        private string machineNameField;
-        
-        private string messageField;
-        
-        private string trackIdField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string AppName {
-            get {
-                return this.appNameField;
-            }
-            set {
-                this.appNameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string AppPath {
-            get {
-                return this.appPathField;
-            }
-            set {
-                this.appPathField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string AppVersion {
-            get {
-                return this.appVersionField;
-            }
-            set {
-                this.appVersionField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public object Exception {
-            get {
-                return this.exceptionField;
-            }
-            set {
-                this.exceptionField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public System.Nullable<System.DateTime> ExceptionDate {
-            get {
-                return this.exceptionDateField;
-            }
-            set {
-                this.exceptionDateField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool ExceptionDateSpecified {
-            get {
-                return this.exceptionDateFieldSpecified;
-            }
-            set {
-                this.exceptionDateFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string IpAddress {
-            get {
-                return this.ipAddressField;
-            }
-            set {
-                this.ipAddressField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string MachineName {
-            get {
-                return this.machineNameField;
-            }
-            set {
-                this.machineNameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string Message {
-            get {
-                return this.messageField;
-            }
-            set {
-                this.messageField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string TrackId {
-            get {
-                return this.trackIdField;
-            }
-            set {
-                this.trackIdField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2556.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/IngenieriaGD.IGDLogWriter.Library.Contrac" +
-        "ts")]
-    public partial class OperationTracking {
-        
-        private string appNameField;
-        
-        private string appPathField;
-        
-        private string appVersionField;
-        
-        private System.Nullable<double> executionTimeField;
-        
-        private bool executionTimeFieldSpecified;
-        
-        private string machineNameField;
-        
-        private string[] maskFieldsField;
-        
-        private string operationField;
-        
-        private System.Nullable<System.DateTime> operationDateField;
-        
-        private bool operationDateFieldSpecified;
-        
-        private string[] removeFieldsField;
-        
-        private object requestField;
-        
-        private object responseField;
-        
-        private string trackIdField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string AppName {
-            get {
-                return this.appNameField;
-            }
-            set {
-                this.appNameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string AppPath {
-            get {
-                return this.appPathField;
-            }
-            set {
-                this.appPathField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string AppVersion {
-            get {
-                return this.appVersionField;
-            }
-            set {
-                this.appVersionField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public System.Nullable<double> ExecutionTime {
-            get {
-                return this.executionTimeField;
-            }
-            set {
-                this.executionTimeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool ExecutionTimeSpecified {
-            get {
-                return this.executionTimeFieldSpecified;
-            }
-            set {
-                this.executionTimeFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string MachineName {
-            get {
-                return this.machineNameField;
-            }
-            set {
-                this.machineNameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
-        [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays")]
-        public string[] MaskFields {
-            get {
-                return this.maskFieldsField;
-            }
-            set {
-                this.maskFieldsField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string Operation {
-            get {
-                return this.operationField;
-            }
-            set {
-                this.operationField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public System.Nullable<System.DateTime> OperationDate {
-            get {
-                return this.operationDateField;
-            }
-            set {
-                this.operationDateField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool OperationDateSpecified {
-            get {
-                return this.operationDateFieldSpecified;
-            }
-            set {
-                this.operationDateFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
-        [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays")]
-        public string[] RemoveFields {
-            get {
-                return this.removeFieldsField;
-            }
-            set {
-                this.removeFieldsField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public object Request {
-            get {
-                return this.requestField;
-            }
-            set {
-                this.requestField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public object Response {
-            get {
-                return this.responseField;
-            }
-            set {
-                this.responseField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string TrackId {
-            get {
-                return this.trackIdField;
-            }
-            set {
-                this.trackIdField = value;
             }
         }
     }

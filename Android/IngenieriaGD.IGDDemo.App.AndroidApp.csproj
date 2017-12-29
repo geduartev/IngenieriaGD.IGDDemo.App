@@ -117,12 +117,6 @@
     <None Include="Web References\WS\ServiceSAL1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Web References\WS\ServiceSAL2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Web References\WS\ServiceSAL3.xsd">
-      <SubType>Designer</SubType>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml">

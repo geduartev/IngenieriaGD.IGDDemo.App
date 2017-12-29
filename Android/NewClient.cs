@@ -182,6 +182,7 @@ namespace IngenieriaGD.IGDDemo.App.AndroidApp
 
             if (e.Error != null)
             {
+                //// TODO: Escribir todas las excepciones para verlas a través de MongoDB.
                 textViewMessage.Text = e.Error.Message;
                 return;
             }
